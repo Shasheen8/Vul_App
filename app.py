@@ -3,10 +3,28 @@ from flask_wtf import Form
 from wtforms import StringField
 from wtforms.validators import InputRequired
 from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, Integer, String
+import os
 
 app = Flask(__name__)
 Bootstrap(app)
 app.config['SECRET_KEY'] = 'yoursecretkey'
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir,'test.db')
+
+db = SQLAlchemy(app)
+
+@app.cli.command('db_create') #database creation
+def db_create():
+	db.create.all()
+	print('Database Created')
+
+@app.cli.command('db_create') #database dropped
+def db_drop():
+	db.drop.all()
+	print('Database Dropped')
+
 
 class NormalForm(Form):
 	username = StringField('Input Field: Username', validators=[InputRequired()])
