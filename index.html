@@ -1,0 +1,22 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+G Project
+{% endblock %}
+
+{% block content %}
+
+<h1>G Project</h1>
+<br>
+<h2>Demonstrate SQL Injection Vulnerabilites</h2>
+<br>
+<div class="container">
+    <form method="POST" action="/">
+       <dl>
+       {{ wtf.quick_form(form)}}
+        <input class="btn btn-primary" type="submit" value="SUBMIT">
+        </dl>
+    </form>
+</div>
+{% endblock %}
