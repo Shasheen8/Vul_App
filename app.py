@@ -8,7 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 Bootstrap(app)
-app.config['SECRET_KEY'] = '984af4b0ba1bca3daf8b096db03e17ad'
+app.config['SECRET_KEY'] = 'secret key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 
 db = SQLAlchemy(app)
