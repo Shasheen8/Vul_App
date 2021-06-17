@@ -2,19 +2,29 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}
-G Project
+Ginger TakeHome
 {% endblock %}
 
 {% block content %}
 
-<h1>G Project</h1>
+<h1>Ginger TakeHome Project</h1>
 <br>
 <h2>Demonstrate SQL Injection Vulnerabilites</h2>
 <br>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{ category }}">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<br>
 <div class="container">
-    <form method="POST" action="/">
+    <form method="POST" action="">
        <dl>
-       {{ wtf.quick_form(form)}}
+       {{ wtf.quick_form(form) }}
         <input class="btn btn-primary" type="submit" value="SUBMIT">
         </dl>
     </form>
