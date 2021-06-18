@@ -5,12 +5,12 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 
 # config mysql
-app.config['MYSQL_HOST'] = 'hostname'
-app.config['MYSQL_USER'] = 'username'
-app.config['MYSQL_PASSWORD'] = 'password'
-app.config['MYSQL_DB'] = 'dbname'
+app.config['MYSQL_HOST'] = 'sql5.freemysqlhosting.net'
+app.config['MYSQL_USER'] = 'sql5419806'
+app.config['MYSQL_PASSWORD'] = 'aKnzLuynHp'
+app.config['MYSQL_DB'] = 'sql5419806'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-app.secret_key = 'key'
+app.secret_key = '12345'
 
 mysql = MySQL()
 mysql.init_app(app)
@@ -34,7 +34,9 @@ def db_populate():
             )
         VALUES
         ('test', 'pass'),
-        ('Ana', 'eat')
+        ('Ana', 'eat'),
+        ('admin', 'admin'),
+        ('admin', 'ginger')
     ;""")
 
 
@@ -47,7 +49,7 @@ def root():
         user = 'guest'
         status = 'logged out'
     
-    return '<strong>User: </strong><span>%s</span><br><strong>Status: </strong><span>%s</span>' % (user, status)
+    return '<h2>Login Status</h2><br><h3>Go to the /home to Login</h3><strong>User: </strong><span>%s</span><br><strong>Status: </strong><span>%s</span>' % (user, status)
 
 @app.route('/home', methods=['GET', 'POST'])
 def home():
@@ -85,7 +87,7 @@ def home():
             cur.close()
         
         else:
-            error = "Thank you for your submission"
+            error = "Thank you for your submission, You are now part of my secure database"
             return error
     
     return render_template('index.html')
