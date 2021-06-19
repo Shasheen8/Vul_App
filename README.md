@@ -18,6 +18,6 @@ Project Details:
 
 
 Research and references used: 
-https://flask.palletsprojects.com/en/2.0.x/
-https://www.codementor.io/@abhishake/minimal-apache-configuration-for-deploying-a-flask-app-ubuntu-18-04-phu50a7ft
-https://coreruleset.org/installation/  
+- https://flask.palletsprojects.com/en/2.0.x/
+- https://www.codementor.io/@abhishake/minimal-apache-configuration-for-deploying-a-flask-app-ubuntu-18-04-phu50a7ft
+- https://coreruleset.org/installation/  
