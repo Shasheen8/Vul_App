@@ -5,12 +5,12 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 
 # config mysql
-app.config['MYSQL_HOST'] = 'sql5.freemysqlhosting.net'
-app.config['MYSQL_USER'] = 'sql5419806'
-app.config['MYSQL_PASSWORD'] = 'aKnzLuynHp'
-app.config['MYSQL_DB'] = 'sql5419806'
+app.config['MYSQL_HOST'] = 'host'
+app.config['MYSQL_USER'] = 'db_name'
+app.config['MYSQL_PASSWORD'] = 'db_password'
+app.config['MYSQL_DB'] = 'host'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-app.secret_key = '12345'
+app.secret_key = 'key'
 
 mysql = MySQL()
 mysql.init_app(app)
@@ -64,6 +64,7 @@ def home():
         
         #Un-parameterized Input 
         result = cur.execute(f"SELECT * FROM users WHERE username = '{username}'")
+        result = cur.execute("SELECT * FROM users WHERE username = '{}'".format(username))
         
         # Parametrized Input 
         #result = cur.execute("SELECT * FROM users WHERE username = %s", [username])
