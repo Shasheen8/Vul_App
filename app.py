@@ -63,11 +63,11 @@ def home():
         cur = mysql.connection.cursor()
         
         #Un-parameterized Input 
-        result = cur.execute(f"SELECT * FROM users WHERE username = '{username}'")
-        result = cur.execute("SELECT * FROM users WHERE username = '{}'".format(username))
+        #result = cur.execute(f"SELECT * FROM users WHERE username = '{username}'")
+        #result = cur.execute("SELECT * FROM users WHERE username = '{}'".format(username))
         
         # Parametrized Input 
-        #result = cur.execute("SELECT * FROM users WHERE username = %s", [username])
+        result = cur.execute("SELECT * FROM users WHERE username = %s", [username])
 
         if result > 0:
             # get stored hash
